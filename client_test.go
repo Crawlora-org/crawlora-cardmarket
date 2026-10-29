@@ -26,8 +26,13 @@ func TestGeneratedClientRequestAndAllowlist(t *testing.T) {
 			if got := r.URL.Query().Get("kind"); got != "singles" {
 				t.Errorf("query value = %q", got)
 			}
-			if false && len(r.URL.Query()["kind"]) != 2 {
-				t.Errorf("array query values = %#v", r.URL.Query()["kind"])
+			if false {
+				if got := r.URL.Query().Get("kind"); got != "" {
+					t.Errorf("array query value = %q, want %q", got, "")
+				}
+				if false && len(r.URL.Query()["kind"]) != 2 {
+					t.Errorf("array query values = %#v", r.URL.Query()["kind"])
+				}
 			}
 		}
 		if "kind" != "" && !strings.Contains(r.URL.RawQuery, "kind=singles") {

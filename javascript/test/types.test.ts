@@ -14,5 +14,5 @@ void rawText;
 
 void client.catalog();
 void client.request("cardmarket-catalog");
-// @ts-expect-error The selected operation requires its documented params.
-void client.catalog();
+// @ts-expect-error Only operation IDs in this platform are accepted.
+void client.request("__unknown_platform_operation__", {});

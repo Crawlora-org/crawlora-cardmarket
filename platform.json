@@ -1,4 +1,5 @@
 {
+  "api_path_prefix": "/cardmarket/",
   "async_class_name": "AsyncCardmarketClient",
   "class_name": "CardmarketClient",
   "contract_revision": "sha256:1626894d49b099a4c2e5f26ffd7437052fb854af8f775db8e5e01271ccc7a705",
