@@ -1,0 +1,1003 @@
+{
+  "basePath": "/api/v1",
+  "definitions": {
+    "app.Response": {
+      "description": "The Response struct is used for wrapping the API response with a code, message, and data.",
+      "properties": {
+        "code": {
+          "description": "Code is the HTTP status code or a custom code used to indicate the result of the request\n@example 200",
+          "type": "integer"
+        },
+        "data": {
+          "description": "Data is the response data (can be any object or null)\n@example {\"id\": 1, \"name\": \"John Doe\"}"
+        },
+        "msg": {
+          "description": "Msg is the message that describes the result of the request\n@example \"Request successful\""
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.CatalogCategoriesResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.CatalogCategory"
+          },
+          "type": "array"
+        },
+        "category_total": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "expansion_total": {
+          "type": "integer"
+        },
+        "expansions": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.CatalogExpansion"
+          },
+          "type": "array"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "game_id": {
+          "type": "integer"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "version": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.CatalogCategory": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "product_count": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.CatalogExpansion": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "product_count": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.CatalogResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.CatalogCategory"
+          },
+          "type": "array"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "empty_state": {
+          "type": "string"
+        },
+        "expansion_id": {
+          "type": "integer"
+        },
+        "expansions": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.CatalogExpansion"
+          },
+          "type": "array"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "game_id": {
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.Product"
+          },
+          "type": "array"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "offset": {
+          "type": "integer"
+        },
+        "q": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.Game": {
+      "properties": {
+        "catalog_available": {
+          "type": "boolean"
+        },
+        "catalog_kinds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "price_guide_available": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.GamesResponse": {
+      "properties": {
+        "fetched_at": {
+          "type": "string"
+        },
+        "games": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.Game"
+          },
+          "type": "array"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.PriceGuideCategoriesResponse": {
+      "properties": {
+        "category_ids": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.PriceGuideCategory"
+          },
+          "type": "array"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "game_id": {
+          "type": "integer"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "price_redistribution_policy_status": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.PriceGuideCategory": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "item_count": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.PriceGuideEntry": {
+      "properties": {
+        "average": {
+          "type": "number"
+        },
+        "average_1d": {
+          "type": "number"
+        },
+        "average_1d_foil": {
+          "type": "number"
+        },
+        "average_1d_holo": {
+          "type": "number"
+        },
+        "average_30d": {
+          "type": "number"
+        },
+        "average_30d_foil": {
+          "type": "number"
+        },
+        "average_30d_holo": {
+          "type": "number"
+        },
+        "average_7d": {
+          "type": "number"
+        },
+        "average_7d_foil": {
+          "type": "number"
+        },
+        "average_7d_holo": {
+          "type": "number"
+        },
+        "average_foil": {
+          "type": "number"
+        },
+        "average_holo": {
+          "type": "number"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "low": {
+          "type": "number"
+        },
+        "low_foil": {
+          "type": "number"
+        },
+        "low_holo": {
+          "type": "number"
+        },
+        "product_id": {
+          "type": "integer"
+        },
+        "trend": {
+          "type": "number"
+        },
+        "trend_foil": {
+          "type": "number"
+        },
+        "trend_holo": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.PriceGuideResponse": {
+      "properties": {
+        "category_id": {
+          "type": "integer"
+        },
+        "category_ids": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.PriceGuideCategory"
+          },
+          "type": "array"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "empty_state": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "game_id": {
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/cardmarket.PriceGuideEntry"
+          },
+          "type": "array"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "offset": {
+          "type": "integer"
+        },
+        "price_redistribution_policy_status": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "integer"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.Product": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "date_added": {
+          "type": "string"
+        },
+        "expansion": {
+          "type": "string"
+        },
+        "expansion_id": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "metacard_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.catalogCategoriesResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cardmarket.CatalogCategoriesResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.catalogResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cardmarket.CatalogResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.gamesResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cardmarket.GamesResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.priceGuideCategoriesResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cardmarket.PriceGuideCategoriesResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cardmarket.priceGuideResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cardmarket.PriceGuideResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.crawlora.net",
+  "info": {
+    "contact": {
+      "email": "support@crawlora.net",
+      "name": "API Support",
+      "url": "https://crawlora.net"
+    },
+    "description": "Crawlora is a hosted web-data and SERP API: call documented REST endpoints and get normalized JSON instead of HTML to parse — across search/SERP, maps and local, e-commerce, app stores, social, media and finance. One API key; Crawlora runs the proxy rotation, headless browsers and parsing behind the scenes. Billed pay-on-success: charged only on a successful 2xx response, 1-10 credits per call, with a free tier of 2,000 credits per month and no card. A hosted MCP server (mcp.crawlora.net/mcp) exposes the same catalog as agent tools. Search endpoints accept `q` as a universal alias for whichever search-term parameter they document (`query`, `term`, `keyword`, or Amazon's `k`), so one parameter name works across the whole catalog; an explicitly supplied documented name always wins.",
+    "license": {
+      "name": "Crawlora Terms of Service",
+      "url": "https://crawlora.net/terms"
+    },
+    "termsOfService": "https://crawlora.net/terms",
+    "title": "Crawlora API",
+    "version": "1.2",
+    "x-logo": {
+      "altText": "Crawlora",
+      "backgroundColor": "#FFFFFF",
+      "url": "https://raw.githubusercontent.com/Crawlora-org/crawlora-mcp/main/assets/logo-400x400.png"
+    }
+  },
+  "paths": {
+    "/cardmarket/catalog": {
+      "get": {
+        "description": "Reads the public singles, non-singles, or global accessories export and applies local name/category/expansion filters. Category and expansion IDs and labels are discovered from the complete selected file. Game IDs 26-33 have price guides but no verified catalogue files. The response is a catalogue snapshot, not current seller offers.",
+        "operationId": "cardmarket-catalog",
+        "parameters": [
+          {
+            "description": "Catalogue file type; defaults to singles",
+            "enum": [
+              "singles",
+              "nonsingles",
+              "accessories"
+            ],
+            "in": "query",
+            "name": "kind",
+            "type": "string",
+            "x-example": "singles"
+          },
+          {
+            "description": "Required for singles/nonsingles; omit for global accessories",
+            "enum": [
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25
+            ],
+            "in": "query",
+            "name": "game_id",
+            "type": "integer",
+            "x-example": 6
+          },
+          {
+            "description": "Optional current category ID; discover the full set with /cardmarket/catalog/categories",
+            "in": "query",
+            "name": "category_id",
+            "type": "integer",
+            "x-example": 51
+          },
+          {
+            "description": "Optional current expansion ID; discover the full set with /cardmarket/catalog/categories",
+            "in": "query",
+            "name": "expansion_id",
+            "type": "integer",
+            "x-example": 1585
+          },
+          {
+            "description": "Optional case-insensitive local product-name substring, up to 200 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string",
+            "x-example": "pikachu"
+          },
+          {
+            "description": "Rows per page, 1-500; defaults to 100",
+            "in": "query",
+            "name": "limit",
+            "type": "integer",
+            "x-example": 100
+          },
+          {
+            "description": "Zero-based offset; defaults to 0",
+            "in": "query",
+            "name": "offset",
+            "type": "integer",
+            "x-example": 0
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cardmarket.catalogResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Search Cardmarket product catalogues",
+        "tags": [
+          "cardmarket"
+        ]
+      }
+    },
+    "/cardmarket/catalog/categories": {
+      "get": {
+        "description": "Returns only the category and expansion values from the selected public product catalogue. Use this lightweight discovery route before filtering catalogues by category_id or expansion_id; it does not return product rows.",
+        "operationId": "cardmarket-catalog-categories",
+        "parameters": [
+          {
+            "description": "Catalogue file type; defaults to singles",
+            "enum": [
+              "singles",
+              "nonsingles",
+              "accessories"
+            ],
+            "in": "query",
+            "name": "kind",
+            "type": "string",
+            "x-example": "singles"
+          },
+          {
+            "description": "Required for singles/nonsingles; omit for global accessories",
+            "enum": [
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25
+            ],
+            "in": "query",
+            "name": "game_id",
+            "type": "integer",
+            "x-example": 6
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cardmarket.catalogCategoriesResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cardmarket catalogue categories and expansions",
+        "tags": [
+          "cardmarket"
+        ]
+      }
+    },
+    "/cardmarket/games": {
+      "get": {
+        "description": "Returns the exact observed public S3 price-guide IDs and whether singles/non-singles catalogue files are present. Product display names are not inferred from numeric IDs when the download index cannot provide a confirmed mapping.",
+        "operationId": "cardmarket-games",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cardmarket.gamesResponseDoc"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cardmarket download game IDs",
+        "tags": [
+          "cardmarket"
+        ]
+      }
+    },
+    "/cardmarket/price-guide": {
+      "get": {
+        "description": "Returns a paginated snapshot of Cardmarket's public daily price-guide export. The response discovers category IDs but the source file has no category labels. Cardmarket's posted English terms include a prior-written-agreement clause for external price display in a future-dated revision whose effective status is unconfirmed here; the response marks permission as unconfirmed.",
+        "operationId": "cardmarket-price-guide",
+        "parameters": [
+          {
+            "description": "Price-guide dataset; defaults to game",
+            "enum": [
+              "game",
+              "accessories"
+            ],
+            "in": "query",
+            "name": "kind",
+            "type": "string",
+            "x-example": "game"
+          },
+          {
+            "description": "Required when kind=game; omit for global accessories",
+            "enum": [
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33
+            ],
+            "in": "query",
+            "name": "game_id",
+            "type": "integer",
+            "x-example": 6
+          },
+          {
+            "description": "Optional category ID; discover the full set with /cardmarket/price-guide/categories",
+            "in": "query",
+            "name": "category_id",
+            "type": "integer",
+            "x-example": 52
+          },
+          {
+            "description": "Optional exact product ID filter",
+            "in": "query",
+            "name": "product_id",
+            "type": "integer",
+            "x-example": 271439
+          },
+          {
+            "description": "Rows per page, 1-500; defaults to 100",
+            "in": "query",
+            "name": "limit",
+            "type": "integer",
+            "x-example": 100
+          },
+          {
+            "description": "Zero-based offset; defaults to 0",
+            "in": "query",
+            "name": "offset",
+            "type": "integer",
+            "x-example": 0
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cardmarket.priceGuideResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Cardmarket daily price-guide data",
+        "tags": [
+          "cardmarket"
+        ]
+      }
+    },
+    "/cardmarket/price-guide/categories": {
+      "get": {
+        "description": "Returns only the numeric category IDs and counts in a game or global accessories price guide. Use this discovery route before filtering price guides by category_id; it does not return price rows.",
+        "operationId": "cardmarket-price-guide-categories",
+        "parameters": [
+          {
+            "description": "Price-guide dataset; defaults to game",
+            "enum": [
+              "game",
+              "accessories"
+            ],
+            "in": "query",
+            "name": "kind",
+            "type": "string",
+            "x-example": "game"
+          },
+          {
+            "description": "Required when kind=game; omit for global accessories",
+            "enum": [
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33
+            ],
+            "in": "query",
+            "name": "game_id",
+            "type": "integer",
+            "x-example": 6
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cardmarket.priceGuideCategoriesResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cardmarket price-guide categories",
+        "tags": [
+          "cardmarket"
+        ]
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "x-api-key",
+      "type": "apiKey"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "cardmarket"
+    }
+  ]
+}
